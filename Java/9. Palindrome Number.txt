@@ -1,0 +1,47 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        if((x<0)|| (x%10 == 0 && x!=0))
+            return false;
+        
+        int reversed =0;
+        while (reversed < x){//if reverse is already bigger than x, it means we already passed half ot the input
+            int remainder = x%10;
+            reversed = reversed*10 + remainder;
+            x/=10;
+        }
+        System.out.println(x);
+        return x == reversed || x == reversed/10;
+    }
+}
+
+//Debug for better understanding
+//run this code for more detail explaination
+public class HelloWorld{
+
+     public static void main(String []args){
+        System.out.println("Hello World");
+        
+        boolean state = isPalindrome(1234321);
+        if(state == true)
+            System.out.println("true");
+     }
+     
+
+    public static boolean isPalindrome(int x) {
+        if((x<0)|| (x%10 == 0 && x!=0))
+            return false;
+        
+        int reversed =0;
+        while (reversed < x){
+            int remainder = x%10;
+            reversed = reversed*10 + remainder;
+            x/=10;
+            System.out.println("x/"+x);
+            System.out.println("reverse/"+reversed);
+            
+        }
+        System.out.println("fianl x "+x);
+        System.out.println("fianl reverse "+reversed);
+        return x == reversed || x == reversed/10;
+    }
+}
