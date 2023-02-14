@@ -1,0 +1,50 @@
+Given two strings s and t, determine if they are isomorphic.
+
+Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+
+ 
+
+Example 1:
+
+Input: s = "egg", t = "add"
+Output: true
+Example 2:
+
+Input: s = "foo", t = "bar"
+Output: false
+Example 3:
+
+Input: s = "paper", t = "title"
+Output: true
+
+============================================
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+
+ 
+var isIsomorphic = function(s, t) {
+  let mapST = new Array(256).fill(-1);
+  let mapTS = new Array(256).fill(-1);
+
+  
+  for(let i=0;i<s.length;i++){
+      let c1 = s.charAt(i);
+      let c2 = t.charAt(i);
+
+      if(mapST[c1.charCodeAt()] === -1 && mapTS[c2.charCodeAt()] === -1){
+          mapST[c1.charCodeAt()] = c2.charCodeAt();
+          mapTS[c2.charCodeAt()] = c1.charCodeAt();
+      }
+
+      else if(!(mapST[c1.charCodeAt()] === c2.charCodeAt() && mapTS[c2.charCodeAt()] === c1.charCodeAt())){
+          return false;
+      }
+  }
+  return true;
+};
